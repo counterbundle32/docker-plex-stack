@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mkvtoolnix:
+    image: jlesage/mkvtoolnix:latest
+    ports:
+      - "5802:5800"
+    #environment:
+      #- UID = 1041
+      #- GID = 1040
+    volumes:
+      - "/home/atort88/docker/mkvtoolnix:/config:rw"
+      - "/media/plexA:/TV_Storage:rw"
+      - "/media/plexB:/Films_Storage:rw"
+    #restart: unless-stopped
