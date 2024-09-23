@@ -42,4 +42,6 @@ services:
     volumes:
       - metube:/var/lib/docker/volumes/metube
       - /home/atort88/docker/MeTube:/downloads  
-    restart: unless-stopped   
+    restart: unless-stopped
+volumes:
+  metube:
