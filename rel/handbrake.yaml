@@ -1,0 +1,17 @@
+version: '3'
+services:
+  handbrake:
+    image: jlesage/handbrake:latest
+    environment:
+      - USER_ID = 1000
+      - GROUP_ID = 1000
+    ports:
+      - "5810:5800"
+    volumes:
+      - "/home/atort88/docker/appdata/handbrake:/config:rw"
+      - "/media/plex_nas:/storage:rw"
+      #- "/media/plexB:/storage_films:rw"
+      #- "/home/user/HandBrake/watch:/watch:rw"
+      #- "/media/plexB/Films/seeders_films/handbrake_films:/output:rw"
+      - "/media/plex_nas/handbrake_output:/output:rw"
+    restart: unless-stopped
