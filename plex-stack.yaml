@@ -1,0 +1,52 @@
+---
+version: "2.1"
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    #network_mode: bridge
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Americas/NEW_YORK
+      - VERSION=docker
+      #- PLEX_CLAIM=adJ_ywgcxmdpVKK6vLFf&X
+      - ADVERTISE_IP=http://192.168.1.23:32400/
+    volumes:
+      - /home/atort88/docker/plex_media_server:/config
+      #- /media/plexA/TV:/tv
+      #- /media/plexA/seeders_tv:/seeders_tv
+      #- /media/plexB/Films:/movies
+      - /media/plex_nas/movies:/movies_nas
+      - /media/plex_nas/TV:/tv_nas
+      - /media/plex_nas/home_videos:/home_videos
+    ports:
+      - 192.168.0.208:32400:32400 
+      #- 1900:1900/udp
+      #- 5353:5353/udp
+      #- 8324:8324
+      #- 32410:32410/udp
+      #- 32412:32412/udp
+      #- 32413:32413/udp
+      #- 32414:32414/udp
+      #- 32469:32469
+    devices:
+      - /dev/dri:/dev/dri
+    restart: unless-stopped
+################################################ 
+  tautulli:
+    image: lscr.io/linuxserver/tautulli:latest
+    container_name: tautulli
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Americas/NEW_YORK
+    volumes:
+      - /home/atort88/docker/tautulli:/config
+    ports:
+      - 192.168.0.208:8181:8181
+    restart: unless-stopped
+
+
+####     https://hub.docker.com/r/linuxserver/plex-meta-manager  ######
