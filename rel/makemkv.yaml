@@ -1,0 +1,19 @@
+version: '3'
+services:
+  makemkv:
+    image: jlesage/makemkv
+    ports:
+      - "192.168.0.208:5811:5800"
+    environment:
+      - MAKEMKV_KEY=BETA
+      - USER_ID=1000
+      - GROUP_ID=1000
+    volumes:
+      - "/home/atort88/docker/appdata/makemkv:/config:rw"
+      - "/media/plex_nas:/storage:rw"
+      - "/media/plex_nas/makemkv_output:/output:rw"
+    devices:
+      #- "/dev/sr0:/dev/sr0"
+     # - "/dev/sg0:/dev/sg0"
+      - "/dev/nvme0n1:/dev/nvme0n1"
+ restart: unless-stopped
