@@ -1,0 +1,17 @@
+version: "3"
+services:
+  metube:
+    image: ghcr.io/alexta69/metube
+    container_name: metube
+    environment:
+      TEMP_DIR: /temp
+    ports:
+      - "192.168.0.208:3081:8081"
+    volumes:
+      - metube:/var/lib/docker/volumes/metube
+      - /home/atort88/docker/MeTube:/downloads
+     # - C:\Users\aftor\OneDrive\MeTube\temp:/temp
+    #network_mode: "container:mullvad_gluetun_container_dynamic_metube" #change gluetun to your VPN container name   
+    restart: unless-stopped   
+volumes:
+  metube:
