@@ -1,0 +1,45 @@
+---
+version: '3'
+services:
+############ Filebot ############
+  filebot:
+    image: jlesage/filebot
+    container_name: filebot
+    ports:
+      - "5801:5800"
+    environment:
+      - UID = 1041
+      - GID = 1040
+    volumes:
+      - "/home/atort88/docker/filebot:/config:rw"
+      - "/media/plex_nas/:/plex:rw"
+    restart: unless-stopped
+############ Handbrake ############
+  handbrake:
+    image: jlesage/handbrake:latest
+    container_name: handbrake
+    environment:
+      - USER_ID = 1000
+      - GROUP_ID = 1000
+    ports:
+      - "5810:5800"
+    volumes:
+      - "/home/atort88/docker/appdata/handbrake:/config:rw"
+      - "/media/plex_nas:/storage:rw"
+      #- "/media/plexB:/storage_films:rw"
+      #- "/home/user/HandBrake/watch:/watch:rw"
+      #- "/media/plexB/Films/seeders_films/handbrake_films:/output:rw"
+      - "/media/plex_nas/handbrake_output:/output:rw"
+    restart: unless-stopped
+############ MeTube ############
+  metube:
+    image: ghcr.io/alexta69/metube
+    container_name: metube
+    environment:
+      TEMP_DIR: /temp
+    ports:
+      - "3081:8081"
+    volumes:
+      - metube:/var/lib/docker/volumes/metube
+      - /home/atort88/docker/MeTube:/downloads  
+    restart: unless-stopped   
