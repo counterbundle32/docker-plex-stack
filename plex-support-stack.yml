@@ -5,8 +5,9 @@ services:
   filebot:
     image: jlesage/filebot
     container_name: filebot
-    ports:
-      - "5801:5800"
+    #ports:
+      #- "5801:5800"
+    network_mode: "container:mullvad_gluetun_container"
     environment:
       - UID = 1041
       - GID = 1040
