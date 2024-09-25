@@ -5,9 +5,8 @@ services:
   filebot:
     image: jlesage/filebot
     container_name: filebot
-    #ports:
-      #- "5801:5800"
-    network_mode: "container:mullvad_gluetun_container"
+    ports:
+      - "5801:5800"
     environment:
       - UID = 1041
       - GID = 1040
@@ -38,8 +37,9 @@ services:
     container_name: metube
     environment:
       TEMP_DIR: /temp
-    ports:
-      - "3081:8081"
+    #ports:
+      #- 3081:8081
+    network_mode: "container:mullvad_gluetun_container"
     volumes:
       - metube:/var/lib/docker/volumes/metube
       - /home/atort88/docker/MeTube:/downloads  
