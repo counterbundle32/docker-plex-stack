@@ -11,7 +11,7 @@ services:
       - UID = 1041
       - GID = 1040
     volumes:
-      - "/home/atort88/docker/filebot:/config:rw"
+      - "/home/atort88/docker/appdata/filebot:/config:rw"
       - "/media/plex_nas/:/plex:rw"
     restart: unless-stopped
 ############ Handbrake ############
@@ -25,6 +25,7 @@ services:
       - "5810:5800"
     volumes:
       - "/home/atort88/docker/appdata/handbrake:/config:rw"
+      - "/home/atort88/docker/appdata/handbrake/working:/config/working:rw"
       - "/media/plex_nas:/storage:rw"
       #- "/media/plexB:/storage_films:rw"
       #- "/home/user/HandBrake/watch:/watch:rw"
