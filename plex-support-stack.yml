@@ -32,17 +32,17 @@ services:
       - "/media/plex_nas/handbrake_output:/output:rw"
     restart: unless-stopped
 ############ MeTube ############
-  metube:
-    image: ghcr.io/alexta69/metube
-    container_name: metube
-    environment:
-      TEMP_DIR: /temp
+#  metube:
+#    image: ghcr.io/alexta69/metube
+#    container_name: metube
+#    environment:
+#      TEMP_DIR: /temp
     #ports:
       #- 3081:8081
-    network_mode: "container:mullvad_gluetun_container"
-    volumes:
-      - metube:/var/lib/docker/volumes/metube
-      - /home/atort88/docker/MeTube:/downloads  
-    restart: unless-stopped
-volumes:
-  metube:
+#    network_mode: "container:mullvad_gluetun_container"
+#    volumes:
+#      - metube:/var/lib/docker/volumes/metube
+#      - /home/atort88/docker/MeTube:/downloads  
+#    restart: unless-stopped
+#volumes:
+#  metube:
