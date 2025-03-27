@@ -1,5 +1,4 @@
----
-version: '3'
+### plex-support-stack
 services:
 ############ Filebot ############
   filebot:
@@ -12,7 +11,8 @@ services:
       - GID = 1040
     volumes:
       - "/home/atort88/docker/appdata/filebot:/config:rw"
-      - "/media/plex_nas/:/plex:rw"
+      - "/media/plex_nas:/plex:rw"
+      - "/home/atort88/qbittorrent/downloads:/storage/homelab:rw"
     restart: unless-stopped
 ############ Handbrake ############
   handbrake:
@@ -27,6 +27,7 @@ services:
       - "/home/atort88/docker/appdata/handbrake:/config:rw"
       - "/home/atort88/docker/appdata/handbrake/working:/config/working:rw"
       - "/media/plex_nas:/storage:rw"
+      - "/home/atort88/qbittorrent/downloads:/storage/homelab:rw"
       #- "/media/plexB:/storage_films:rw"
       #- "/home/user/HandBrake/watch:/watch:rw"
       #- "/media/plexB/Films/seeders_films/handbrake_films:/output:rw"
