@@ -11,7 +11,7 @@ services:
       - PGID=1000
       - TZ=Americas/NEW_YORK
       - VERSION=docker
-      #- PLEX_CLAIM=adJ_ywgcxmdpVKK6vLFf&X
+      #- PLEX_CLAIM=Q4iKETH8TR3kJfyw5-fs
       - ADVERTISE_IP=http://192.168.1.23:32400/
     volumes:
       - /home/atort88/docker/plex_media_server:/config
